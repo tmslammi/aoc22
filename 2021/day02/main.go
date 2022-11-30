@@ -1,4 +1,4 @@
-package main
+package day02
 
 import (
 	"github.com/tmslammi/go-aoc/util"
