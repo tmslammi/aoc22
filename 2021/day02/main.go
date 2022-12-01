@@ -8,7 +8,7 @@ import (
 
 func part1() int {
 	defer util.TimeTrack(time.Now(), "Day 2 part 1")
-	fileContent := util.ReadFile("./input.txt")
+	fileContent := util.ReadLines("./input.txt")
 	hPos := 0
 	vPos := 0
 	for i := 0; i < len(fileContent); i++ {
@@ -29,7 +29,7 @@ func part1() int {
 
 func part2() int {
 	defer util.TimeTrack(time.Now(), "Day 2 part 2")
-	fileContent := util.ReadFile("./input.txt")
+	fileContent := util.ReadLines("./input.txt")
 	aim := 0
 	hPos := 0
 	depth := 0

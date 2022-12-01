@@ -2,12 +2,26 @@ package util
 
 import (
 	"bufio"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 )
 
-func ReadFile(path string) []string {
+func Read(path string) string {
+	absPath, err := filepath.Abs(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	file, err := ioutil.ReadFile(absPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	str := string(file)
+	return str
+}
+
+func ReadLines(path string) []string {
 	absPath, err := filepath.Abs(path)
 	if err != nil {
 		log.Fatal(err)

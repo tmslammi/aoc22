@@ -24,14 +24,22 @@ func SliceToInt(slice []string) []int {
 
 func FindMin(slice []int) int {
 	min := 0
-	prev := 0
 	for _, row := range slice {
-		if row < prev {
-			min = prev
+		if row < min {
+			min = row
 		}
-		prev = row
 	}
 	return min
+}
+
+func FindMax(slice []int) int {
+	max := 0
+	for _, row := range slice {
+		if row > max {
+			max = row
+		}
+	}
+	return max
 }
 
 func SortDesc(slice []int) []int {
@@ -54,4 +62,21 @@ func Sum(slice []int) int {
 		sum += row
 	}
 	return sum
+}
+
+func ChunkByChar(slice []string, char string) [][]string {
+	var results [][]string
+	var temp []string
+	for i, row := range slice {
+		if row == char {
+			results = append(results, temp)
+			temp = nil
+		} else {
+			temp = append(temp, row)
+			if i == len(slice)-1 {
+				results = append(results, temp)
+			}
+		}
+	}
+	return results
 }

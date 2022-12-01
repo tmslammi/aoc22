@@ -7,18 +7,13 @@ import (
 
 func part1() int {
 	defer util.TimeTrack(time.Now(), "Day 1 part 1")
-	fileContent := util.ReadFile("input.txt")
-	var toSum []int
+	fileContent := util.ReadLines("input.txt")
 	var biggestSum int
-	for _, row := range fileContent {
-		if row == "" {
-			sum := util.Sum(toSum)
-			if sum > biggestSum {
-				biggestSum = sum
-			}
-			toSum = nil
-		} else {
-			toSum = append(toSum, util.ToInt(row))
+	grouped := util.ChunkByChar(fileContent, "")
+	for _, row := range grouped {
+		sum := util.Sum(util.SliceToInt(row))
+		if sum > biggestSum {
+			biggestSum = sum
 		}
 	}
 	return biggestSum
@@ -26,17 +21,12 @@ func part1() int {
 
 func part2() int {
 	defer util.TimeTrack(time.Now(), "Day 1 part 2")
-	fileContent := util.ReadFile("input.txt")
-	var toSum []int
+	fileContent := util.ReadLines("input.txt")
 	var biggestSums []int
-	for _, row := range fileContent {
-		if row == "" {
-			sum := util.Sum(toSum)
-			biggestSums = append(biggestSums, sum)
-			toSum = nil
-		} else {
-			toSum = append(toSum, util.ToInt(row))
-		}
+	grouped := util.ChunkByChar(fileContent, "")
+	for _, row := range grouped {
+		sum := util.Sum(util.SliceToInt(row))
+		biggestSums = append(biggestSums, sum)
 	}
 	top := util.SortAsc(biggestSums)[:3]
 	return util.Sum(top)
