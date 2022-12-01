@@ -28,7 +28,7 @@ func part1() int {
 }
 
 func part2() int {
-	defer util.TimeTrack(time.Now(), "Day 1 part 1")
+	defer util.TimeTrack(time.Now(), "Day 1 part 2")
 	fileContent := util.ReadFile("input.txt")
 	var toSum []int
 	var biggestSums []int
