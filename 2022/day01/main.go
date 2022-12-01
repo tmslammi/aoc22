@@ -16,7 +16,7 @@ func part1() int {
 			if sum > biggestSum {
 				biggestSum = sum
 			}
-			toSum = make([]int, 0)
+			toSum = nil
 		} else {
 			toSum = append(toSum, util.ToInt(row))
 		}
@@ -33,7 +33,7 @@ func part2() int {
 		if row == "" {
 			sum := util.Sum(toSum)
 			biggestSums = append(biggestSums, sum)
-			toSum = make([]int, 0)
+			toSum = nil
 		} else {
 			toSum = append(toSum, util.ToInt(row))
 		}
