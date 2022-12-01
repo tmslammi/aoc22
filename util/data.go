@@ -34,6 +34,13 @@ func FindMin(slice []int) int {
 	return min
 }
 
+func SortDesc(slice []int) []int {
+	sort.Slice(slice, func(i, j int) bool {
+		return slice[i] < slice[j]
+	})
+	return slice
+}
+
 func SortAsc(slice []int) []int {
 	sort.Slice(slice, func(i, j int) bool {
 		return slice[i] > slice[j]

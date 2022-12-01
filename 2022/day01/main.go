@@ -12,10 +12,7 @@ func part1() int {
 	var biggestSum int
 	for _, row := range fileContent {
 		if row == "" {
-			sum := 0
-			for _, r := range toSum {
-				sum += r
-			}
+			sum := util.Sum(toSum)
 			if sum > biggestSum {
 				biggestSum = sum
 			}
@@ -34,10 +31,7 @@ func part2() int {
 	var biggestSums []int
 	for _, row := range fileContent {
 		if row == "" {
-			sum := 0
-			for _, r := range toSum {
-				sum += r
-			}
+			sum := util.Sum(toSum)
 			biggestSums = append(biggestSums, sum)
 			toSum = make([]int, 0)
 		} else {
@@ -45,6 +39,5 @@ func part2() int {
 		}
 	}
 	top := util.SortAsc(biggestSums)[:3]
-	sum := util.Sum(top)
-	return sum
+	return util.Sum(top)
 }
