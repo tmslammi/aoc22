@@ -1,6 +1,9 @@
 package util
 
-import "sort"
+import (
+	"github.com/emirpasic/gods/utils"
+	"sort"
+)
 
 func Chunk(slice []string, chunkSize int) [][]string {
 	var chunks [][]string
@@ -77,6 +80,23 @@ func ChunkByChar(slice []string, char string) [][]string {
 				results = append(results, temp)
 			}
 		}
+	}
+	return results
+}
+
+func Contains(slice []string, s string) bool {
+	for _, item := range slice {
+		if item == s {
+			return true
+		}
+	}
+	return false
+}
+
+func InterfaceToSlice(rows []interface{}) []string {
+	var results []string
+	for _, row := range rows {
+		results = append(results, utils.ToString(row))
 	}
 	return results
 }
