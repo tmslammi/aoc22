@@ -11,7 +11,7 @@ func TestPart1(t *testing.T) {
 
 func TestPar2(t *testing.T) {
 	got := part2()
-	if got != 11998 {
-		t.Errorf("got = %d; want 11998", got)
+	if got != 2585 {
+		t.Errorf("got = %d; want 2585", got)
 	}
 }

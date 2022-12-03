@@ -21,11 +21,35 @@ func part1() int {
 	return total
 }
 
+func part2() int {
+	defer util.TimeTrack(time.Now(), "Day 3 part 2")
+	input := util.ReadLines("input.txt")
+	total := 0
+	for i := 0; i < len(input); i += 3 {
+		chunk := input[i : i+3]
+		matches := findMatchesBatch(chunk)
+		total += calculateScoreForMatches(matches)
+	}
+	return total
+}
+
 func findMatches(s1 string, s2 string) []string {
 	set := hashset.New()
 	firstSplit := strings.Split(s1, "")
 	for _, r := range strings.Split(s2, "") {
 		if util.Contains(firstSplit, r) {
+			set.Add(fmt.Sprint(r))
+		}
+	}
+	return util.InterfaceToSlice(set.Values())
+}
+
+func findMatchesBatch(slice []string) []string {
+	set := hashset.New()
+	firstSplit := strings.Split(slice[0], "")
+	secondSplit := strings.Split(slice[1], "")
+	for _, r := range strings.Split(slice[2], "") {
+		if util.Contains(firstSplit, r) && util.Contains(secondSplit, r) {
 			set.Add(fmt.Sprint(r))
 		}
 	}
@@ -43,9 +67,4 @@ func calculateScoreForMatches(matches []string) int {
 		}
 	}
 	return score
-}
-
-func part2() int {
-	defer util.TimeTrack(time.Now(), "Day 3 part 2")
-	return 0
 }
