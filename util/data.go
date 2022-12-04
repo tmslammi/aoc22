@@ -2,7 +2,6 @@ package util
 
 import (
 	"github.com/emirpasic/gods/utils"
-	"github.com/samber/lo"
 	"sort"
 )
 
@@ -112,5 +111,9 @@ func InterfaceToSlice(rows []interface{}) []string {
 }
 
 func BuildRange(from int, until int) []int {
-	return lo.RangeFrom(from, until-from+1)
+	var results []int
+	for i := from; i <= until; i++ {
+		results = append(results, i)
+	}
+	return results
 }
