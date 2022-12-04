@@ -2,6 +2,7 @@ package util
 
 import (
 	"github.com/emirpasic/gods/utils"
+	"github.com/samber/lo"
 	"sort"
 )
 
@@ -84,7 +85,16 @@ func ChunkByChar(slice []string, char string) [][]string {
 	return results
 }
 
-func Contains(slice []string, s string) bool {
+func ContainsString(slice []string, s string) bool {
+	for _, item := range slice {
+		if item == s {
+			return true
+		}
+	}
+	return false
+}
+
+func ContainsInt(slice []int, s int) bool {
 	for _, item := range slice {
 		if item == s {
 			return true
@@ -99,4 +109,8 @@ func InterfaceToSlice(rows []interface{}) []string {
 		results = append(results, utils.ToString(row))
 	}
 	return results
+}
+
+func BuildRange(from int, until int) []int {
+	return lo.RangeFrom(from, until-from+1)
 }

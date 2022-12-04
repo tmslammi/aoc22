@@ -37,7 +37,7 @@ func findMatches(s1 string, s2 string) []string {
 	set := hashset.New()
 	firstSplit := strings.Split(s1, "")
 	for _, r := range strings.Split(s2, "") {
-		if util.Contains(firstSplit, r) {
+		if util.ContainsString(firstSplit, r) {
 			set.Add(fmt.Sprint(r))
 		}
 	}
@@ -49,7 +49,7 @@ func findMatchesBatch(slice []string) []string {
 	firstSplit := strings.Split(slice[0], "")
 	secondSplit := strings.Split(slice[1], "")
 	for _, r := range strings.Split(slice[2], "") {
-		if util.Contains(firstSplit, r) && util.Contains(secondSplit, r) {
+		if util.ContainsString(firstSplit, r) && util.ContainsString(secondSplit, r) {
 			set.Add(fmt.Sprint(r))
 		}
 	}
